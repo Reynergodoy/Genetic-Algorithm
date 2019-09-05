@@ -18,6 +18,12 @@ class Individual {
     
   }
   mutate () {
+    const times = Math.floor(Math.random() * this.genes.length);
+    const genes = this.genes;
+    const len = genes.length;
+    for (let i = 0; i < times; i++) {
+      genes[Math.floor(Math.random() * len)].mutate();
+    }
   }
   compare (canvas) {
     
