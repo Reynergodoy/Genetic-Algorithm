@@ -19,10 +19,15 @@ class Individual {
   }
   mutate () {
   }
-  compare () {
+  compare (canvas) {
     
   }
   rollback () {
+    const genes = this.genes;
+    const len = genes.length;
+    for (let i = 0; i < len; i++) {
+      genes[i].rollBack();
+    }
   }
 }
 
