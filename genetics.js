@@ -34,7 +34,7 @@ class Genotype {
   }
   init (canvas) {
     const points = this.points;
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 3; i++) {
       points.push([Math.floor(Math.random() * canvas.length), Math.floor(Math.random() * canvas.height)]);
     }
     this.colors = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)];
