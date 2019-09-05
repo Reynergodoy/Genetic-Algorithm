@@ -15,7 +15,23 @@ class Individual {
     return this;
   }
   draw (canvas) {
-    
+    const genes = this.genes;
+    const len = genes.length;
+    for (let i = 0; i < len; i++) {
+      const gene = genes[i];
+      const points = gene.points;
+      const pLen = points.length;
+      const fPoint = points[0];
+      canvas.fillStyle = 'rgb(' + gene.color.toString() + ');';
+      canvas.beginPath();
+      canvas.moveTo(fPoint[0], fPoint[1]);
+      for (let i = 1; i < pLen; i++) {
+        const point = points[i];
+        canvas.lineTo(point[0], point[1]);
+      }
+      canvas.closePath();
+      canvas.fill();
+    }
   }
   mutate () {
     const times = Math.floor(Math.random() * this.genes.length);
@@ -26,7 +42,13 @@ class Individual {
     }
   }
   compare (canvas) {
-    
+    const target = this.target;
+    const data = canvas.getImageData(0, 0, canvas.width, canvas.height).data;
+    let fitness = 0;
+    for (const piece in data) {
+      fitness += Math.abs(data[piece] - target[piece]); 
+    }
+    return fitness;
   }
   rollback () {
     const genes = this.genes;
@@ -46,7 +68,7 @@ class Genotype {
   init (canvas) {
     const points = this.points;
     for (let i = 0; i < 3; i++) {
-      points.push([Math.floor(Math.random() * canvas.length), Math.floor(Math.random() * canvas.height)]);
+      points.push([Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height)]);
     }
     this.colors = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)];
     return this;
