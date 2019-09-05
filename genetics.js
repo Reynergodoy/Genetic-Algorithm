@@ -43,7 +43,7 @@ class Individual {
   }
   compare (canvas) {
     const target = this.target;
-    const data = canvas.getImageData(0, 0, canvas.width, canvas.height).data;
+    const data = canvas.getImageData(0, 0, canvas.canvas.width, canvas.canvas.height).data;
     let fitness = 0;
     for (const piece in data) {
       fitness += Math.abs(data[piece] - target[piece]); 
