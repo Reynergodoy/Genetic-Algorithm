@@ -24,7 +24,7 @@ class Individual {
       const points = gene.points;
       const pLen = points.length;
       const fPoint = points[0];
-      context.fillStyle = 'rgb(' + gene.colors.toString() + ');';
+      context.fillStyle = 'rgb(' + gene.colors.toString() + ')';
       context.beginPath();
       context.moveTo(fPoint[0], fPoint[1]);
       for (let i = 1; i < pLen; i++) {
