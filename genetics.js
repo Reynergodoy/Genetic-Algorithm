@@ -22,7 +22,7 @@ class Individual {
       const points = gene.points;
       const pLen = points.length;
       const fPoint = points[0];
-      canvas.fillStyle = 'rgb(' + gene.color.toString() + ');';
+      canvas.fillStyle = 'rgb(' + gene.colors.toString() + ');';
       canvas.beginPath();
       canvas.moveTo(fPoint[0], fPoint[1]);
       for (let i = 1; i < pLen; i++) {
