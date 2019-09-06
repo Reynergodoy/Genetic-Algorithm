@@ -90,6 +90,7 @@ class Genotype {
     const len = points.length;
     const deltaX = Math.floor(Math.random() * 11) - 5;
     const deltaY = Math.floor(Math.random() * 11) - 5;
+    this.rollback = [null, null];
     this.rollback[0] = [...points];
     for (let i = 0; i < len; i++) {
       points[i][0] += deltaX;
@@ -99,6 +100,7 @@ class Genotype {
   changePoint () {
     const points = this.points;
     const rand = Math.floor(Math.random() * points.length);
+    this.rollback = [null, null];
     this.rollback[0] = [...points];
     points[rand][0] += Math.floor(Math.random() * 11) - 5;
     points[rand][0] += Math.floor(Math.random() * 11) - 5;
@@ -106,6 +108,7 @@ class Genotype {
   changeColor () {
     const colors = this.colors;
     const rand = Math.floor(Math.random() * 4);
+    this.rollback = [null, null];
     this.rollback[1] = [...colors];
     colors[rand] = Math.abs(colors[rand] + Math.floor(Math.random() * 11) - 5) % 255;
   }
