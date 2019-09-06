@@ -1,10 +1,11 @@
 class Individual {
-  constructor (quantity) {
+  constructor (quantity, alpha) {
     this.genes = [];
     this.target = [];
     this.fitness = 0;
     this.generation = 0;
     this.quantity = quantity;
+    this.alpha = alpha;
   }
   init (canvas) {
     const quantity = this.quantity;
@@ -17,6 +18,7 @@ class Individual {
   draw (context) {
     const genes = this.genes;
     const len = genes.length;
+    context.globalAlpha = this.alpha;
     for (let i = 0; i < len; i++) {
       const gene = genes[i];
       const points = gene.points;
