@@ -21,7 +21,7 @@ function train (iterations) {
     ind.mutate();
     ind.draw(context);
     const newFitness = ind.compare(context);
-    if (newFitness > ind.fitness) {
+    if (newFitness < ind.fitness) { // low fitness means better
       ind.fitness = newFitness;
     } else {
       ind.rollback();
