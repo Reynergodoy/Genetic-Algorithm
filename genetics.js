@@ -14,7 +14,7 @@ class Individual {
     }
     return this;
   }
-  draw (canvas) {
+  draw (context) {
     const genes = this.genes;
     const len = genes.length;
     for (let i = 0; i < len; i++) {
@@ -22,15 +22,15 @@ class Individual {
       const points = gene.points;
       const pLen = points.length;
       const fPoint = points[0];
-      canvas.fillStyle = 'rgb(' + gene.colors.toString() + ');';
-      canvas.beginPath();
-      canvas.moveTo(fPoint[0], fPoint[1]);
+      context.fillStyle = 'rgb(' + gene.colors.toString() + ');';
+      context.beginPath();
+      context.moveTo(fPoint[0], fPoint[1]);
       for (let i = 1; i < pLen; i++) {
         const point = points[i];
-        canvas.lineTo(point[0], point[1]);
+        context.lineTo(point[0], point[1]);
       }
-      canvas.closePath();
-      canvas.fill();
+      context.closePath();
+      context.fill();
     }
   }
   mutate () {
@@ -41,9 +41,9 @@ class Individual {
       genes[Math.floor(Math.random() * len)].mutate();
     }
   }
-  compare (canvas) {
+  compare (context) {
     const target = this.target;
-    const data = canvas.getImageData(0, 0, canvas.canvas.width, canvas.canvas.height).data;
+    const data = context.getImageData(0, 0, context.canvas.width, context.canvas.height).data;
     let fitness = 0;
     for (const piece in data) {
       fitness += Math.abs(data[piece] - target[piece]); 
