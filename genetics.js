@@ -70,7 +70,7 @@ class Genotype {
     for (let i = 0; i < 3; i++) {
       points.push([Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height)]);
     }
-    this.colors = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)];
+    this.colors = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)];
     return this;
   }
   mutate () {
