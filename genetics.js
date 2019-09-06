@@ -117,7 +117,7 @@ class Genotype {
   }
   changeColor () {
     const colors = this.colors;
-    const rand = Math.floor(Math.random() * 4);
+    const rand = Math.floor(Math.random() * 3);
     this.rollback = [null, null];
     this.rollback[1] = [...colors];
     colors[rand] = Math.abs(colors[rand] + Math.floor(Math.random() * 11) - 5) % 255;
