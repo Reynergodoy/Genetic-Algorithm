@@ -35,12 +35,12 @@ class Individual {
       context.fill();
     }
   }
-  mutate () {
+  mutate (canvas) {
     const times = Math.floor(Math.random() * this.genes.length);
     const genes = this.genes;
     const len = genes.length;
     for (let i = 0; i < times; i++) {
-      genes[Math.floor(Math.random() * len)].mutate();
+      genes[Math.floor(Math.random() * len)].mutate(canvas);
     }
   }
   compare (context) {
@@ -75,14 +75,16 @@ class Genotype {
     this.colors = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)];
     return this;
   }
-  mutate () {
-    const rand = Math.floor(Math.random() * 3);
+  mutate (canvas) {
+    const rand = Math.floor(Math.random() * 4);
     if (rand === 0) {
       this.move();
     } else if (rand === 1) {
       this.changePoint();
     } else if (rand === 2) {
       this.changeColor();
+    } else if (rand ===3) {
+      this.randomPoint(canvas);
     }
   }
   move () {
@@ -103,7 +105,15 @@ class Genotype {
     this.rollback = [null, null];
     this.rollback[0] = [...points];
     points[rand][0] += Math.floor(Math.random() * 11) - 5;
-    points[rand][0] += Math.floor(Math.random() * 11) - 5;
+    points[rand][1] += Math.floor(Math.random() * 11) - 5;
+  }
+  randomPoint (canvas) {
+    const points = this.points;
+    const rand = Math.floor(Math.random() * points.length);
+    this.rollback = [null, null];
+    this.rollback[0] = [...points];
+    points[rand][0] = Math.floor(Math.random() * canvas.width);
+    points[rand][1] = Math.floor(Math.random() * canvas.height);
   }
   changeColor () {
     const colors = this.colors;
