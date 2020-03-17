@@ -12,7 +12,7 @@ function setup (src) {
     ind.target = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
   });
   img.src = src;
-}
+};
 
 function train (iterations) {
   const context = canvas.getContext('2d');
@@ -27,4 +27,4 @@ function train (iterations) {
       ind.rollback();
     }
   }
-}
+};
