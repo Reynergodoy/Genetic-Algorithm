@@ -7,7 +7,7 @@ hidden.appendChild(_canvas);
 
 function setup (src) {
   ind.init(canvas);
-  img.addEventListener ('load', () => {
+  img.addEventListener('load', () => {
     ctx.drawImage(img, 0, 0);
     ind.target = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
   });
